@@ -5,18 +5,26 @@ stages:
   - build
   - test
   - deploy
+  - review
+  - dast
+  - staging
+  - canary
+  - production
+  - incremental rollout 10%
+  - incremental rollout 25%
+  - incremental rollout 50%
+  - incremental rollout 100%
+  - performance
+  - cleanup
 
 # 設置構建步驟
 build:
   stage: build
-  image: node:18.17.1 # 使用 Node.js 的 Docker 映像
+  image: node:18.17.1
   before_script:
-    # 安裝 pnpm
     - npm install -g pnpm
-    # 設置 pnpm 快取目錄
     - pnpm config set store-dir .pnpm-store
   script:
-    # 安裝依賴並構建應用
     - pnpm install
     - pnpm run build
   cache:
@@ -27,20 +35,28 @@ build:
       - .pnpm-store
   artifacts:
     paths:
-      - .next # 確保 .next 目錄是否存在且正確生成
+      - .next
     expire_in: 1 hour
-    when: always # 確保即使有錯誤，仍然會上傳工件
+    when: always
 
 # 測試步驟
 test:
   stage: test
   script:
-    # 確保安裝 pnpm 並運行測試
     - npm install -g pnpm
     - pnpm install
     - pnpm test
 
+# 部署步驟
 deploy:
   stage: deploy
   script:
     - echo "部署步驟在這裡"
+
+# 預覽步驟 (使用 rules)
+review:
+  stage: review
+  script:
+    - echo "Review 部署步驟"
+  rules:
+    - if: '$CI_MERGE_REQUEST_ID'  # 當存在合併請求時執行
