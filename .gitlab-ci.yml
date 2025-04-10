@@ -1,26 +1,58 @@
-# You can override the included template(s) by including variable overrides
-# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
-# Secret Detection customization: https://docs.gitlab.com/ee/user/application_security/secret_detection/pipeline/#customization
-# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
-# Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
-# Note that environment variables can be set in several places
-# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
-stages:
-- build
-- test
-- deploy
-- review
-- dast
-- staging
-- canary
-- production
-- incremental rollout 10%
-- incremental rollout 25%
-- incremental rollout 50%
-- incremental rollout 100%
-- performance
-- cleanup
-sast:
-  stage: test
+# 使用 Auto DevOps 模板
 include:
-- template: Auto-DevOps.gitlab-ci.yml
+  - template: Auto-DevOps.gitlab-ci.yml
+
+# 自定義構建流程
+stages:
+  - build
+  - test
+  - deploy
+  - review
+  - dast
+  - staging
+  - canary
+  - production
+  - incremental rollout 10%
+  - incremental rollout 25%
+  - incremental rollout 50%
+  - incremental rollout 100%
+  - performance
+  - cleanup
+
+# 設置構建步驟
+build:
+  stage: build
+  image: node:18.17.1 # 使用 Node.js 的 Docker 映像
+  before_script:
+    # 安裝 corepack 和啟用 pnpm
+    - npm install --global corepack@latest
+    - corepack enable
+    - corepack prepare pnpm@latest-10 --activate
+    # 設置 pnpm 快取目錄
+    - pnpm config set store-dir .pnpm-store
+  script:
+    # 安裝依賴並構建應用
+    - pnpm install
+    - pnpm run build
+  cache:
+    key:
+      files:
+        - pnpm-lock.yaml
+    paths:
+      - .pnpm-store
+  artifacts:
+    paths:
+      - .next # 這是 Next.js 构建后输出的目录
+    expire_in: 1 hour
+
+# 如果有需要的話，您可以加上測試階段 (如果需要測試)
+test:
+  stage: test
+  script:
+    - pnpm test # 假設您有設定 pnpm test 來執行測試
+
+# 部署階段
+deploy:
+  stage: deploy
+  script:
+    - echo "部署步驟在這裡"
