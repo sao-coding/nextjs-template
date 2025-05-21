@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js 13+ 課程範本
 
-## Getting Started
+這個專案是基於 Next.js 13+ (App Router) 的學習範本，旨在協助開發者快速掌握現代 React 全端開發。
 
-First, run the development server:
+## 課程內容
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Next.js 13+ 架構與 App Router 新特性
+- React, TypeScript 與 Tailwind CSS 基礎
+- 前後端分工與合作方式
+- API Route 設計與實作
+- Redis 整合應用（進階）
+
+## 專案架構
+
+```
+template/
+├── app/                  # 主要路由結構與頁面
+│   ├── (examples)/       # 範例路由群組 (不影響實際 URL)
+│   ├── [dynamicRoute]/   # 動態路由範例
+│   ├── api/              # API 路由
+│   └── @modal/           # 平行路由範例
+├── components/           # 元件目錄
+│   ├── ui/               # UI 元件 (shadcn/ui)
+│   └── [其他業務元件]     # 業務相關元件
+├── config/               # 全域設定
+├── hooks/                # 自訂 React Hooks
+├── lib/                  # 工具函式庫
+├── store/                # 狀態管理 (可選用 Zustand)
+├── types/                # TypeScript 型別定義
+└── public/               # 靜態資源
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 技術堆疊
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js 15+
+- React 19+
+- TypeScript
+- Tailwind CSS
+- Shadcn UI
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 開始使用
 
-## Learn More
+```bash
+# 安裝相依套件
+pnpm install
 
-To learn more about Next.js, take a look at the following resources:
+# 啟動開發伺服器
+pnpm dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 特色功能
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- App Router 基於目錄的路由設計
+- React Server Components 效能優化
+- TypeScript 型別安全
+- Tailwind CSS 原子化樣式
+- API Routes 後端功能

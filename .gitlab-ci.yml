@@ -1,62 +1,62 @@
-include:
-  - template: Auto-DevOps.gitlab-ci.yml
+# include:
+#   - template: Auto-DevOps.gitlab-ci.yml
 
-stages:
-  - build
-  - test
-  - deploy
-  - review
-  - dast
-  - staging
-  - canary
-  - production
-  - incremental rollout 10%
-  - incremental rollout 25%
-  - incremental rollout 50%
-  - incremental rollout 100%
-  - performance
-  - cleanup
+# stages:
+#   - build
+#   - test
+#   - deploy
+#   - review
+#   - dast
+#   - staging
+#   - canary
+#   - production
+#   - incremental rollout 10%
+#   - incremental rollout 25%
+#   - incremental rollout 50%
+#   - incremental rollout 100%
+#   - performance
+#   - cleanup
 
-# 設置構建步驟
-build:
-  stage: build
-  image: node:18.17.1
-  before_script:
-    - npm install -g pnpm
-    - pnpm config set store-dir .pnpm-store
-  script:
-    - pnpm install
-    - pnpm run build
-  cache:
-    key:
-      files:
-        - pnpm-lock.yaml
-    paths:
-      - .pnpm-store
-  artifacts:
-    paths:
-      - .next
-    expire_in: 1 hour
-    when: always
+# # 設置構建步驟
+# build:
+#   stage: build
+#   image: node:18.17.1
+#   before_script:
+#     - npm install -g pnpm
+#     - pnpm config set store-dir .pnpm-store
+#   script:
+#     - pnpm install
+#     - pnpm run build
+#   cache:
+#     key:
+#       files:
+#         - pnpm-lock.yaml
+#     paths:
+#       - .pnpm-store
+#   artifacts:
+#     paths:
+#       - .next
+#     expire_in: 1 hour
+#     when: always
 
-# 測試步驟
-test:
-  stage: test
-  script:
-    - npm install -g pnpm
-    - pnpm install
-    - pnpm test
+# # 測試步驟
+# test:
+#   stage: test
+#   script:
+#     - npm install -g pnpm
+#     - pnpm install
+#     - pnpm test
 
-# 部署步驟
-deploy:
-  stage: deploy
-  script:
-    - echo "部署步驟在這裡"
+# # 部署步驟
+# deploy:
+#   stage: deploy
+#   script:
+#     - echo "部署步驟在這裡"
 
-# 預覽步驟 (使用 rules)
-review:
-  stage: review
-  script:
-    - echo "Review 部署步驟"
-  rules:
-    - if: '$CI_MERGE_REQUEST_ID'  # 當存在合併請求時執行
+# # 預覽步驟 (使用 rules)
+# review:
+#   stage: review
+#   script:
+#     - echo "Review 部署步驟"
+#   rules:
+#     - if: '$CI_MERGE_REQUEST_ID'  # 當存在合併請求時執行

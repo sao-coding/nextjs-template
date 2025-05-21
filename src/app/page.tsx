@@ -1,113 +1,109 @@
-import Image from "next/image"
+import Link from 'next/link'
+import { ArrowRight, Code, Layers, Layout, Lightbulb, Server, Zap } from 'lucide-react'
+
+import { ThemeToggle } from '@/components/theme-toggle'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function Home() {
+  const features = [
+    {
+      icon: <Server className='text-primary h-10 w-10' />,
+      title: 'App Router 路由系統',
+      description: '使用最新的 Next.js App Router 為您的應用建構高效率的路由架構'
+    },
+    {
+      icon: <Zap className='text-primary h-10 w-10' />,
+      title: 'React Server Components',
+      description: '利用 React 19 的伺服器元件功能改善首次載入性能與 SEO'
+    },
+    {
+      icon: <Code className='text-primary h-10 w-10' />,
+      title: 'TypeScript 型別安全',
+      description: '享受完整型別檢查帶來的開發效率與程式碼品質提升'
+    },
+    {
+      icon: <Layout className='text-primary h-10 w-10' />,
+      title: 'Tailwind CSS 樣式',
+      description: '透過原子化 CSS 框架快速構建現代且響應式的界面'
+    },
+    {
+      icon: <Lightbulb className='text-primary h-10 w-10' />,
+      title: 'Shadcn UI 元件',
+      description: '使用高品質、可客製化的 UI 元件加速開發進程'
+    },
+    {
+      icon: <Layers className='text-primary h-10 w-10' />,
+      title: '完整路由範例',
+      description: '包含動態、平行與攔截路由等多種實用範例'
+    }
+  ]
+
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <div className='z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex'>
-        <p className='fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200  lg:p-4 dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:dark:bg-zinc-800/30'>
-          Get started by editing&nbsp;
-          <code className='font-mono font-bold'>src/app/page.tsx</code>
-        </p>
-        <div className='fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white lg:static lg:h-auto lg:w-auto lg:bg-none dark:from-black dark:via-black'>
-          <a
-            className='pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0'
-            href='https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            By{" "}
-            <Image
-              src='/vercel.svg'
-              alt='Vercel Logo'
-              className='dark:invert'
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className='flex min-h-screen flex-col'>
+      {/* 主題切換按鈕 */}
+      <div className='fixed top-4 right-4 z-10'>
+        <ThemeToggle />
+      </div>
+
+      {/* 英雄區段 */}
+      <section className='flex flex-col items-center justify-center px-4 pt-20 md:pt-32 lg:pt-40 xl:pt-48'>
+        <div className='container max-w-5xl'>
+          <div className='flex flex-col items-center gap-6 text-center'>
+            <h1 className='from-primary to-primary/60 bg-gradient-to-r bg-clip-text text-4xl font-bold tracking-tighter text-transparent sm:text-5xl md:text-6xl'>
+              Next.js 13+ 課程範本
+            </h1>
+            <p className='text-muted-foreground max-w-[700px] text-lg md:text-xl'>
+              使用最新技術打造現代化網頁應用 — App Router, React 19, TypeScript 和 Tailwind CSS
+            </p>
+            <div className='flex flex-wrap items-center justify-center gap-4 pt-2'>
+              <Button size='lg' asChild>
+                <Link href='/examples'>
+                  查看範例頁面
+                  <ArrowRight className='ml-2 h-4 w-4' />
+                </Link>
+              </Button>
+              <Button variant='outline' size='lg' asChild>
+                <a href='https://nextjs.org/docs' target='_blank' rel='noopener noreferrer'>
+                  Next.js 文件
+                </a>
+              </Button>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40">
-        <Image
-          className='relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert'
-          src='/next.svg'
-          alt='Next.js Logo'
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className='mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left'>
-        <a
-          href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href='https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href='https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-balance text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      {/* 功能展示區段 */}
+      <section className='w-full py-20 md:py-28'>
+        <div className='container mx-auto max-w-6xl px-4 md:px-6'>
+          <div className='flex flex-col items-center gap-12'>
+            <div className='text-center'>
+              <h2 className='mb-4 text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
+                核心功能與特色
+              </h2>
+              <p className='text-muted-foreground mx-auto max-w-[700px] md:text-lg'>
+                這個範本包含了現代 Web 開發所需的所有關鍵元素
+              </p>
+            </div>
+            <div className='grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+              {features.map((feature, index) => (
+                <Card
+                  key={index}
+                  className='group hover:border-primary/50 h-full border transition-all duration-300 hover:shadow-md'
+                >
+                  <CardHeader>
+                    <div className='mb-3'>{feature.icon}</div>
+                    <CardTitle className='text-xl'>{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className='text-muted-foreground'>{feature.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }
