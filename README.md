@@ -4,8 +4,8 @@
 
 ## 課程內容
 
-- Next.js 13+ 架構與 App Router 新特性
-- React, TypeScript 與 Tailwind CSS 基礎
+- Next.js 15+ 架構與 App Router 新特性
+- React 19+, TypeScript 與 Tailwind CSS 基礎
 - 前後端分工與合作方式
 - API Route 設計與實作
 - Redis 整合應用（進階）
