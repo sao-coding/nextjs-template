@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 // 這是一個伺服器元件 (默認)
 // 無需添加 'use client' 指令
-export default async function ServerComponentPage() {
+const ServerComponentPage = async () => {
   // 模擬從伺服器獲取數據
   const data = await getData()
 
@@ -89,6 +89,8 @@ export default async function Page() {
     </div>
   )
 }
+
+export default ServerComponentPage
 
 // 模擬從伺服器獲取數據的函數
 async function getData() {

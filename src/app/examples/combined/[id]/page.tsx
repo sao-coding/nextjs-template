@@ -16,7 +16,7 @@ interface ProductPageProps {
   }>
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
+const ProductPage = async ({ params }: ProductPageProps) => {
   const resolvedParams = await params
   const { id } = resolvedParams
 
@@ -195,3 +195,5 @@ export default async function ProductPage({ params }: ProductPageProps) {
     </div>
   )
 }
+
+export default ProductPage

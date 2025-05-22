@@ -12,7 +12,7 @@ import {
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
 
-export default function InterceptingRoutesPage() {
+const InterceptingRoutesPage = () => {
   const searchParams = useSearchParams()
 
   const projects = [
@@ -191,3 +191,5 @@ app/
     </div>
   )
 }
+
+export default InterceptingRoutesPage

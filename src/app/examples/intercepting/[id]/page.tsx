@@ -6,7 +6,7 @@ interface ProjectPageProps {
   }>
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
+const ProjectPage = async ({ params }: ProjectPageProps) => {
   const resolvedParams = await params
   const { id } = resolvedParams
 
@@ -118,3 +118,5 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     </div>
   )
 }
+
+export default ProjectPage

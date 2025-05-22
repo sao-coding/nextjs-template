@@ -1,13 +1,16 @@
 // 這是一個動態路由頁面
 // [id] 在 URL 中會被實際的值替換
-export default function DynamicRoutePage({ params }: { params: { id: string } }) {
+const DynamicRoutePage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const resolvedParams = await params
+  const { id } = resolvedParams
+
   return (
     <div className='space-y-8'>
       <div>
         <h1 className='mb-4 text-3xl font-bold'>動態路由範例</h1>
         <p className='text-muted-foreground mb-6 text-lg'>
           這個頁面展示了 Next.js 中動態路由的用法，目前顯示的 ID 參數為:{' '}
-          <span className='bg-muted rounded px-2 py-1 font-mono'>{params.id}</span>
+          <span className='bg-muted rounded px-2 py-1 font-mono'>{id}</span>
         </p>
       </div>
 
@@ -19,8 +22,8 @@ export default function DynamicRoutePage({ params }: { params: { id: string } })
             這對於建立產品頁面、使用者設定檔或任何需要根據 ID 顯示不同內容的頁面非常有用。
           </p>
           <p>
-            在這個範例中，URL 路徑是 <code>/examples/dynamic/{params.id}</code>， 您可以嘗試更改 URL
-            中的 ID 來查看不同的結果。
+            在這個範例中，URL 路徑是 <code>/examples/dynamic/{id}</code>， 您可以嘗試更改 URL 中的
+            ID 來查看不同的結果。
           </p>
         </div>
 
@@ -73,3 +76,5 @@ export default function Page({ params }) {
     </div>
   )
 }
+
+export default DynamicRoutePage

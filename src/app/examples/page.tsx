@@ -1,14 +1,23 @@
-import Link from 'next/link'
 import {
-  ArrowRight,
+  BookOpen,
   GalleryVertical,
   MousePointerClick,
   Route,
   RouteOff,
+  Server,
   Share2
 } from 'lucide-react'
 
-export default function ExamplesPage() {
+import ExampleCard from './card'
+
+export interface Example {
+  title: string
+  href: string
+  description: string
+  icon: React.ReactNode
+}
+
+const ExamplesPage = () => {
   const examples = [
     {
       title: '伺服器元件',
@@ -45,6 +54,18 @@ export default function ExamplesPage() {
       href: '/examples/combined',
       description: '結合平行路由和攔截路由，實現更複雜的應用場景。',
       icon: <Share2 className='h-6 w-6' />
+    },
+    {
+      title: 'React Hooks',
+      href: '/examples/react-hooks',
+      description: '展示 React 三個最常用的 hooks：useState、useEffect 和 useRef 的使用方法。',
+      icon: <BookOpen className='h-6 w-6' />
+    },
+    {
+      title: '路由功能比較',
+      href: '/examples/compare',
+      description: '對比 Next.js 的平行路由與 React 的 Suspense 錯誤邊界。',
+      icon: <Share2 className='h-6 w-6' rotate={45} />
     }
   ]
 
@@ -64,47 +85,11 @@ export default function ExamplesPage() {
 
       <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
         {examples.map((example) => (
-          <Link
-            key={example.href}
-            href={example.href}
-            className='group border-muted bg-background hover:border-primary/50 relative block overflow-hidden rounded-xl border-2 p-6 transition-all duration-300 hover:shadow-lg'
-          >
-            <div className='text-primary absolute top-4 right-4 opacity-70 transition-opacity group-hover:opacity-100'>
-              <ArrowRight className='h-5 w-5' />
-            </div>
-
-            <div className='text-primary mb-3'>{example.icon}</div>
-
-            <h2 className='group-hover:text-primary mb-2 text-xl font-semibold transition-colors'>
-              {example.title}
-            </h2>
-
-            <p className='text-muted-foreground group-hover:text-foreground/80 transition-colors'>
-              {example.description}
-            </p>
-          </Link>
+          <ExampleCard key={example.href} example={example} />
         ))}
       </div>
     </div>
   )
 }
 
-function Server(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      {...props}
-    >
-      <rect width='20' height='8' x='2' y='2' rx='2' ry='2' />
-      <rect width='20' height='8' x='2' y='14' rx='2' ry='2' />
-      <line x1='6' x2='6.01' y1='6' y2='6' />
-      <line x1='6' x2='6.01' y1='18' y2='18' />
-    </svg>
-  )
-}
+export default ExamplesPage

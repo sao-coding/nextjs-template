@@ -9,7 +9,7 @@ interface ProjectModalProps {
   }>
 }
 
-export default function ProjectModal({ params }: ProjectModalProps) {
+const ProjectModal = ({ params }: ProjectModalProps) => {
   const resolvedParams = use(params)
   const { id } = resolvedParams
 
@@ -129,3 +129,5 @@ export default function ProjectModal({ params }: ProjectModalProps) {
     </div>
   )
 }
+
+export default ProjectModal

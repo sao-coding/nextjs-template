@@ -14,7 +14,7 @@ interface ProductModalProps {
   }>
 }
 
-export default function ProductModal({ params }: ProductModalProps) {
+const ProductModal = ({ params }: ProductModalProps) => {
   const router = useRouter()
   const resolvedParams = use(params)
   const { id } = resolvedParams
@@ -159,3 +159,5 @@ export default function ProductModal({ params }: ProductModalProps) {
     </Dialog>
   )
 }
+
+export default ProductModal

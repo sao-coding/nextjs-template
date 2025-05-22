@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-export default function NewProjectModal() {
+const NewProjectModal = () => {
   const router = useRouter()
   const [formState, setFormState] = useState({
     name: '',
@@ -138,3 +138,5 @@ export default function NewProjectModal() {
     </div>
   )
 }
+
+export default NewProjectModal

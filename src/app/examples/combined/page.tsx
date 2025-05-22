@@ -6,7 +6,7 @@ import { motion } from 'motion/react'
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
-export default function CombinedExamplePage() {
+const CombinedExamplePage = () => {
   const [activeView, setActiveView] = useState<'list' | 'grid'>('list')
 
   const products = [
@@ -192,3 +192,5 @@ export default function CombinedExamplePage() {
     </div>
   )
 }
+
+export default CombinedExamplePage

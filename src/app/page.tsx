@@ -1,39 +1,54 @@
 import Link from 'next/link'
-import { ArrowRight, Code, Layers, Layout, Lightbulb, Server, Zap } from 'lucide-react'
+import {
+  ArrowRight,
+  CodeIcon,
+  LayersIcon,
+  LayoutIcon,
+  LightbulbIcon,
+  ServerIcon,
+  ZapIcon
+} from 'lucide-react'
 
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-export default function Home() {
-  const features = [
+import FeatureCard from './card'
+
+export interface Feature {
+  icon: React.ReactNode
+  title: string
+  description: string
+}
+
+const Home = () => {
+  const features: Feature[] = [
     {
-      icon: <Server className='text-primary h-10 w-10' />,
+      icon: <ServerIcon className='text-primary h-10 w-10' />,
       title: 'App Router 路由系統',
       description: '使用最新的 Next.js App Router 為您的應用建構高效率的路由架構'
     },
     {
-      icon: <Zap className='text-primary h-10 w-10' />,
+      icon: <ZapIcon className='text-primary h-10 w-10' />,
       title: 'React Server Components',
       description: '利用 React 19 的伺服器元件功能改善首次載入性能與 SEO'
     },
     {
-      icon: <Code className='text-primary h-10 w-10' />,
+      icon: <CodeIcon className='text-primary h-10 w-10' />,
       title: 'TypeScript 型別安全',
       description: '享受完整型別檢查帶來的開發效率與程式碼品質提升'
     },
     {
-      icon: <Layout className='text-primary h-10 w-10' />,
+      icon: <LayoutIcon className='text-primary h-10 w-10' />,
       title: 'Tailwind CSS 樣式',
       description: '透過原子化 CSS 框架快速構建現代且響應式的界面'
     },
     {
-      icon: <Lightbulb className='text-primary h-10 w-10' />,
+      icon: <LightbulbIcon className='text-primary h-10 w-10' />,
       title: 'Shadcn UI 元件',
       description: '使用高品質、可客製化的 UI 元件加速開發進程'
     },
     {
-      icon: <Layers className='text-primary h-10 w-10' />,
+      icon: <LayersIcon className='text-primary h-10 w-10' />,
       title: '完整路由範例',
       description: '包含動態、平行與攔截路由等多種實用範例'
     }
@@ -87,18 +102,7 @@ export default function Home() {
             </div>
             <div className='grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
               {features.map((feature, index) => (
-                <Card
-                  key={index}
-                  className='group hover:border-primary/50 h-full border transition-all duration-300 hover:shadow-md'
-                >
-                  <CardHeader>
-                    <div className='mb-3'>{feature.icon}</div>
-                    <CardTitle className='text-xl'>{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className='text-muted-foreground'>{feature.description}</p>
-                  </CardContent>
-                </Card>
+                <FeatureCard key={index} feature={feature} />
               ))}
             </div>
           </div>
@@ -107,3 +111,5 @@ export default function Home() {
     </main>
   )
 }
+
+export default Home

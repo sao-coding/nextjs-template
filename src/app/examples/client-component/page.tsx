@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 
 // 這是一個伺服器元件 (默認)
-export default function ClientComponentPage() {
+const ClientComponentPage = () => {
   const [count, setCount] = useState(0)
   const [items, setItems] = useState<string[]>([])
   const [inputValue, setInputValue] = useState('')
@@ -155,3 +155,5 @@ export default function Page() {
     </div>
   )
 }
+
+export default ClientComponentPage
