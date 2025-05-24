@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import * as z from 'zod'
 
 import { submitFormAction } from '@/actions/formActions'
 import { Button } from '@/components/ui/button'
@@ -18,20 +17,15 @@ import {
   FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { formSchema, FormValues } from '@/schemas/formSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
-
-// 表單驗證結構
-const formSchema = z.object({
-  name: z.string().min(2, { message: '名稱至少需要2個字元' }),
-  email: z.string().email({ message: '請輸入有效的電子郵件' })
-})
 
 export default function FormExample() {
   const [isLoading, setIsLoading] = useState(false)
   const [isActionLoading, setIsActionLoading] = useState(false)
 
   // 使用 fetch 的表單
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
@@ -40,7 +34,7 @@ export default function FormExample() {
   })
 
   // 使用 Server Action 的表單
-  const actionForm = useForm<z.infer<typeof formSchema>>({
+  const actionForm = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
@@ -49,7 +43,7 @@ export default function FormExample() {
   })
 
   // 處理 fetch 表單提交
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: FormValues) {
     setIsLoading(true)
     try {
       const response = await fetch('/api/submit-form', {
@@ -88,7 +82,7 @@ export default function FormExample() {
   }
 
   // 處理 Server Action 表單提交
-  async function onActionSubmit(values: z.infer<typeof formSchema>) {
+  async function onActionSubmit(values: FormValues) {
     setIsActionLoading(true)
     try {
       // 將表單數據轉為 FormData
