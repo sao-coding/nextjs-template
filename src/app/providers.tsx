@@ -3,8 +3,7 @@
 import React from 'react'
 
 // import Cookies from 'js-cookie'
-
-// import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const Providers = ({
   children
@@ -13,13 +12,11 @@ const Providers = ({
   children: React.ReactNode
   // session: Session | null
 }) => {
-  // const [queryClient] = React.useState(() => new QueryClient())
+  const [queryClient] = React.useState(() => new QueryClient())
 
   return (
     // <SessionProvider session={session}>
-    // <QueryClientProvider client={queryClient}>
-    <>{children}</>
-    // </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     // </SessionProvider>
   )
 }

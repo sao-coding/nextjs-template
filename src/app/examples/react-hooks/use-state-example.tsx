@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 
+import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -9,6 +10,16 @@ import { Input } from '@/components/ui/input'
 export default function UseStateExample() {
   // 基本計數器
   const [count, setCount] = useState(0)
+
+  // 普通變數 (非狀態)
+  let normalCount = 0
+
+  // 更新普通變數的函數
+  const incrementNormalCount = () => {
+    normalCount += 1
+    console.log('普通變數已更新:', normalCount)
+    // 注意: 這不會觸發重新渲染
+  }
 
   // 表單狀態
   const [formData, setFormData] = useState({
@@ -58,14 +69,45 @@ export default function UseStateExample() {
             </pre>
           </div>
 
+          <Alert className='mb-4'>
+            <AlertDescription>
+              <strong>useState 與普通變數的差異：</strong>
+              <br />
+              1. useState 的值在重新渲染後會保留
+              <br />
+              2. useState 的更新會觸發組件重新渲染
+              <br />
+              3. 普通變數在每次渲染時都會重置為初始值
+            </AlertDescription>
+          </Alert>
+
           <div>
-            <h3 className='mb-2 text-lg font-medium'>基本計數器範例</h3>
-            <div className='flex items-center gap-4'>
-              <Button onClick={() => setCount((c) => Math.max(0, c - 1))} disabled={count === 0}>
-                -
-              </Button>
-              <span className='text-xl'>{count}</span>
-              <Button onClick={() => setCount((c) => c + 1)}>+</Button>
+            <h3 className='mb-2 text-lg font-medium'>狀態與普通變數比較</h3>
+            <div className='mb-4 grid grid-cols-2 gap-4'>
+              <div className='rounded-md border p-4'>
+                <p className='mb-2 font-medium'>useState 狀態</p>
+                <div className='flex items-center gap-4'>
+                  <Button
+                    onClick={() => setCount((c) => Math.max(0, c - 1))}
+                    disabled={count === 0}
+                  >
+                    -
+                  </Button>
+                  <span className='text-xl'>{count}</span>
+                  <Button onClick={() => setCount((c) => c + 1)}>+</Button>
+                </div>
+              </div>
+
+              <div className='rounded-md border p-4'>
+                <p className='mb-2 font-medium'>普通變數 (檢查控制台)</p>
+                <div className='flex items-center gap-4'>
+                  <span className='text-xl'>{normalCount}</span>
+                  <Button onClick={incrementNormalCount}>增加 (查看控制台)</Button>
+                </div>
+                <p className='text-muted-foreground mt-2 text-xs'>
+                  即使變數在函數中更新，UI也不會更新
+                </p>
+              </div>
             </div>
           </div>
 

@@ -55,3 +55,18 @@ pnpm dev
 - TypeScript 型別安全
 - Tailwind CSS 原子化樣式
 - API Routes 後端功能
+
+## 常用套件
+
+- `zod` - 用於驗證與解析搜尋參數，確保型別安全
+- `zustand` - 輕量級的 React 狀態管理工具
+- `shadcn/ui` - 提供現成的 UI 元件庫，快速構建美觀的介面
+- `Magic UI` - 用於快速構建美觀的 UI 元件
+- `@tanstack/react-query` - 用於數據獲取與快取，提升應用效能
+
+型別 解釋
+useRef 解釋
+tailwindcss 預設會把全部樣式抹除
+淺談渲染方式 CSR/SSR/SSG/ISR
+zustand 狀態管理
+麵包屑導航是死的要修改

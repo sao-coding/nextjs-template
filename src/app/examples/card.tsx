@@ -31,13 +31,10 @@ const ExampleCard = ({ example }: { example: Example }) => {
         <div className='text-primary absolute top-4 right-4 opacity-70 transition-opacity group-hover:opacity-100'>
           <ArrowRight className='h-5 w-5' />
         </div>
-
         <div className='text-primary mb-3'>{example.icon}</div>
-
         <h2 className='group-hover:text-primary mb-2 text-xl font-semibold transition-colors'>
           {example.title}
         </h2>
-
         <p className='text-muted-foreground group-hover:text-foreground/80 transition-colors'>
           {example.description}
         </p>

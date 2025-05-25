@@ -68,19 +68,37 @@ const ErrorFallback = ({
   </Card>
 )
 
+// 模擬資源載入的輔助函數
+const createResource = () => {
+  let status = 'pending'
+  let result: any
+  const promise = new Promise((resolve) => {
+    setTimeout(() => {
+      status = 'success'
+      result = '載入完成的內容'
+      resolve(result)
+    }, 2000)
+  })
+
+  return {
+    read() {
+      if (status === 'pending') {
+        throw promise
+      } else if (status === 'success') {
+        return result
+      }
+    }
+  }
+}
+
+// 建立資源實例 (在模組層級建立，確保僅初始化一次)
+const resource = createResource()
+
 // 模擬加載中的組件
 const SlowComponent = () => {
-  const [isLoaded, setIsLoaded] = useState(false)
-
-  setTimeout(() => {
-    setIsLoaded(true)
-  }, 2000)
-
-  if (!isLoaded) {
-    throw new Promise((resolve) => setTimeout(resolve, 2000))
-  }
-
-  return <div>載入完成的內容</div>
+  // 讀取資源，如果還沒準備好會拋出 Promise
+  const data = resource.read()
+  return <div>{data}</div>
 }
 
 // 載入中顯示的骨架屏

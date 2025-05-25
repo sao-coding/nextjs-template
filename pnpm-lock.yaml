@@ -62,6 +62,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4.1.7
         version: 4.1.7
+      '@tanstack/react-query':
+        specifier: ^5.77.0
+        version: 5.77.0(react@19.1.0)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -116,6 +119,9 @@ importers:
       zod:
         specifier: ^3.25.20
         version: 3.25.20
+      zustand:
+        specifier: ^5.0.5
+        version: 5.0.5(@types/react@19.1.5)(react@19.1.0)
     devDependencies:
       '@eslint/js':
         specifier: ^9.27.0
@@ -1055,6 +1061,14 @@ packages:
 
   '@tailwindcss/postcss@4.1.7':
     resolution: {integrity: sha512-88g3qmNZn7jDgrrcp3ZXEQfp9CVox7xjP1HN2TFKI03CltPVd/c61ydn5qJJL8FYunn0OqBaW5HNUga0kmPVvw==}
+
+  '@tanstack/query-core@5.77.0':
+    resolution: {integrity: sha512-PFeWjgMQjOsnxBwnW/TJoO0pCja2dzuMQoZ3Diho7dPz7FnTUwTrjNmdf08evrhSE5nvPIKeqV6R0fvQfmhGeg==}
+
+  '@tanstack/react-query@5.77.0':
+    resolution: {integrity: sha512-jX52ot8WxWzWnAknpRSEWj6PTR/7nkULOfoiaVPk6nKu0otwt30UMBC9PTg/m1x0uhz1g71/imwjViTm/oYHxA==}
+    peerDependencies:
+      react: ^18 || ^19
 
   '@tybys/wasm-util@0.9.0':
     resolution: {integrity: sha512-6+7nlbMVX/PVDCwaIQ8nTOPveOcFLSt8GcXdx8hD0bt39uWxYT88uXzqTd4fTvqta7oeUJqudepapKNt2DYJFw==}
@@ -2676,6 +2690,24 @@ packages:
   zod@3.25.20:
     resolution: {integrity: sha512-z03fqpTMDF1G02VLKUMt6vyACE7rNWkh3gpXVHgPTw28NPtDFRGvcpTtPwn2kMKtQ0idtYJUTxchytmnqYswcw==}
 
+  zustand@5.0.5:
+    resolution: {integrity: sha512-mILtRfKW9xM47hqxGIxCv12gXusoY/xTSHBYApXozR0HmQv299whhBeeAcRy+KrPPybzosvJBCOmVjq6x12fCg==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=18.0.0'
+      immer: '>=9.0.6'
+      react: '>=18.0.0'
+      use-sync-external-store: '>=1.2.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+      use-sync-external-store:
+        optional: true
+
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -3505,6 +3537,13 @@ snapshots:
       '@tailwindcss/oxide': 4.1.7
       postcss: 8.5.3
       tailwindcss: 4.1.7
+
+  '@tanstack/query-core@5.77.0': {}
+
+  '@tanstack/react-query@5.77.0(react@19.1.0)':
+    dependencies:
+      '@tanstack/query-core': 5.77.0
+      react: 19.1.0
 
   '@tybys/wasm-util@0.9.0':
     dependencies:
@@ -5304,3 +5343,8 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   zod@3.25.20: {}
+
+  zustand@5.0.5(@types/react@19.1.5)(react@19.1.0):
+    optionalDependencies:
+      '@types/react': 19.1.5
+      react: 19.1.0
