@@ -27,7 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='zh-TW' suppressHydrationWarning>
-      <body className={cn('bg-background min-h-screen font-sans antialiased', fontSans.variable)}>
+      <body
+        className={cn(
+          'bg-background min-h-screen bg-[url("/bg.png")] bg-cover font-sans antialiased',
+          fontSans.variable
+        )}
+      >
         <div className='via-background to-background fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-400/20 dark:from-sky-900/30' />
         <ThemeProvider attribute='class' disableTransitionOnChange>
           <Providers>

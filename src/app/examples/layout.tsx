@@ -24,7 +24,7 @@ export default function ExamplesLayout({ children }: { children: React.ReactNode
   ]
 
   return (
-    <div className='flex min-h-screen flex-col bg-[url("/bg.png")] bg-cover'>
+    <div className='flex min-h-screen flex-col'>
       {/* 毛玻璃效果導航欄 */}
       <header className='fixed top-4 right-0 left-0 z-50 mx-auto w-[95%] max-w-7xl overflow-hidden rounded-xl border border-white/10 bg-white/5 px-4 py-2 shadow-xl backdrop-blur-xl dark:border-black/10 dark:bg-black/5'>
         <div className='flex h-12 items-center justify-between'>
