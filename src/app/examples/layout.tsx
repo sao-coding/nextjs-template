@@ -8,13 +8,13 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/s
 export default function ExamplesLayout({ children }: { children: React.ReactNode }) {
   const navItems = [
     { href: '/examples', label: '範例首頁' },
-    { href: '/examples/server-component', label: '伺服器元件' },
+    { href: '/examples/react-hooks', label: 'React Hooks' },
     { href: '/examples/client-component', label: '客戶端元件' },
+    { href: '/examples/server-component', label: '伺服器元件' },
     { href: '/examples/dynamic/123', label: '動態路由' },
     { href: '/examples/parallel-routes', label: '平行路由' },
     { href: '/examples/intercepting', label: '攔截路由' },
     { href: '/examples/combined', label: '組合範例' },
-    { href: '/examples/react-hooks', label: 'React Hooks' },
     { href: '/examples/compare', label: '路由功能比較' },
     { href: '/examples/suspense-boundaries', label: 'Suspense 邊界' },
     { href: '/examples/form', label: '表單處理' },

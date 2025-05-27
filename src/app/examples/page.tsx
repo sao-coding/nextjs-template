@@ -25,16 +25,22 @@ export interface Example {
 const ExamplesPage = () => {
   const examples = [
     {
-      title: '伺服器元件',
-      href: '/examples/server-component',
-      description: '展示 Next.js 中伺服器元件的基本使用方式和特性。',
-      icon: <Server className='h-6 w-6' />
+      title: 'React Hooks',
+      href: '/examples/react-hooks',
+      description: '展示 React 三個最常用的 hooks：useState、useEffect 和 useRef 的使用方法。',
+      icon: <BookOpen className='h-6 w-6' />
     },
     {
       title: '客戶端元件',
       href: '/examples/client-component',
       description: '展示如何在 Next.js 中使用客戶端元件處理前端互動和狀態。',
       icon: <MousePointerClick className='h-6 w-6' />
+    },
+    {
+      title: '伺服器元件',
+      href: '/examples/server-component',
+      description: '展示 Next.js 中伺服器元件的基本使用方式和特性。',
+      icon: <Server className='h-6 w-6' />
     },
     {
       title: '動態路由',
@@ -59,12 +65,6 @@ const ExamplesPage = () => {
       href: '/examples/combined',
       description: '結合平行路由和攔截路由，實現更複雜的應用場景。',
       icon: <Share2 className='h-6 w-6' />
-    },
-    {
-      title: 'React Hooks',
-      href: '/examples/react-hooks',
-      description: '展示 React 三個最常用的 hooks：useState、useEffect 和 useRef 的使用方法。',
-      icon: <BookOpen className='h-6 w-6' />
     },
     {
       title: '路由功能比較',
