@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
 
 import {
   Breadcrumb,
@@ -13,8 +12,6 @@ import {
 } from '@/components/ui/breadcrumb'
 
 const InterceptingRoutesPage = () => {
-  const searchParams = useSearchParams()
-
   const projects = [
     { id: '1', name: '網站重新設計', status: '進行中' },
     { id: '2', name: '行動應用開發', status: '規劃中' },
