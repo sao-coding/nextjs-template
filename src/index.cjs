@@ -22,3 +22,11 @@ const user = {
   name: '小明',
   age: 25
 }
+
+function add(a, b) {
+  return a + b
+}
+
+console.log(add(1, 2)) // 3
+console.log(add('1', 2)) // "12"
+console.log(add(true, [])) // "true"

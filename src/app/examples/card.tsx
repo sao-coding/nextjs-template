@@ -7,7 +7,7 @@ import { ArrowRight } from 'lucide-react'
 
 import { MagicCard } from '@/components/magicui/magic-card'
 
-import { Example } from './page'
+import { type Example } from './page'
 
 const ExampleCard = ({ example }: { example: Example }) => {
   const { theme } = useTheme()

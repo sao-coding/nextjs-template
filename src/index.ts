@@ -1,3 +1,6 @@
+// TS 是 JS 的超集
+// TypeScript 又在 JavaScript 的基礎上，加上了「型別系統」和其他額外功能。
+
 /**
  * TypeScript 型別系統範例
  * 本檔案展示 TypeScript 中各種型別定義的方式與使用情境
@@ -195,6 +198,13 @@ function formatPerson(person: Person): string {
 }
 
 console.log(formatPerson(person))
+
+// 斷言
+const someValue: unknown = '這是一個字串'
+const someValue1 = someValue as number // 使用 as 斷言將 unknown 轉為 number
+if (typeof someValue === 'string') {
+  someValue.split(' ') // 錯誤，unknown 型別無法直接使用方法
+}
 
 // ==================== 特殊型別使用場景 ====================
 
